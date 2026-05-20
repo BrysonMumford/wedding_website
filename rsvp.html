@@ -126,9 +126,9 @@
       height: 100%;
     }
 
-    .reception-icon { font-size: 1.6rem; }
-    .reception-name { font-size: 0.95rem; margin-top: 0.2rem; }
-    .reception-detail { font-size: 0.78rem; font-weight: 400; color: var(--text-light); line-height: 1.4; }
+    .reception-icon { font-size: 1.6rem; display: block; }
+    .reception-name { font-size: 0.95rem; margin-top: 0.2rem; display: block; }
+    .reception-detail { font-size: 0.78rem; font-weight: 400; color: var(--text-light); line-height: 1.4; margin-top: 0.2rem; display: block; }
 
     .reception-option input:checked + .reception-label {
       border-color: var(--blue-deep);
@@ -237,7 +237,7 @@
 <div class="attend-option">
 <input id="attend-yes" name="attendance" required="" type="radio" value="yes"/>
 <label class="attend-label" for="attend-yes">
-<span class="attend-icon">🥂</span>
+<span class="attend-icon">🎉</span>
                     Joyfully Accepts
                   </label>
 </div>
@@ -274,6 +274,7 @@
 <span class="reception-icon">🌽</span>
 <span class="reception-name">Indiana Reception</span>
 <span class="reception-detail">October 3, 2026</span>
+<span class="reception-detail">5:00 – 8:00 PM</span>
 <span class="reception-detail">Pollard House</span>
 <span class="reception-detail">Logansport, Indiana</span>
 </label>
@@ -357,7 +358,7 @@
 
 
 <p class="footer-names">Gretel <span>&amp;</span> Bryson</p>
-<p style="margin-top:0.3rem;">September 5, 2026  ·  Holladay, Utah</p>
+
 </footer>
 <script>
     // Replace this with your deployed Apps Script URL
