@@ -314,7 +314,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   .hero-garland.right { right: -20px; }
 }
 @media (orientation: landscape) and (max-height: 600px) {
-  .hero-garland { height: clamp(280px, 80vh, 420px); top: 36%; }
+  .hero-garland { height: clamp(280px, 80vh, 420px); top: 39%; }
   .hero-garland.left  { left: max(0px, calc(50% - 360px)); }
   .hero-garland.right { right: max(0px, calc(50% - 360px)); }
 }
