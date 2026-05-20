@@ -309,7 +309,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   transform: translateY(-50%) scaleX(-1);
 }
 @media (max-width: 700px) {
-  .hero-garland { height: clamp(200px, 45vh, 320px); top: 35%; }
+  .hero-garland { height: clamp(200px, 45vh, 320px); top: 28%; }
   .hero-garland.left  { left: -20px; }
   .hero-garland.right { right: -20px; }
 }
@@ -564,6 +564,8 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   .form-row { grid-template-columns: 1fr; }
   nav { padding: 0 1rem; }
   .nav-hamburger { display: block; }
+  .hero-content { min-height: 60vh; }
+  .hero { padding: 5rem 1.5rem 3rem; }
   .nav-links {
     display: none;
     position: absolute;

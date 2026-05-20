@@ -183,6 +183,17 @@
       if (e.key === 'Escape')     closeLightbox();
     });
   </script>
-<script src="nav.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('nav-hamburger');
+  var nav = document.querySelector('nav');
+  if(btn) {
+    btn.addEventListener('click', function(){ nav.classList.toggle('nav-open'); });
+    document.querySelectorAll('.nav-links a').forEach(function(a){
+      a.addEventListener('click', function(){ nav.classList.remove('nav-open'); });
+    });
+  }
+})();
+</script>
 </body>
 </html>
