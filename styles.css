@@ -309,7 +309,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   transform: translateY(-50%) scaleX(-1);
 }
 @media (max-width: 700px) {
-  .hero-garland { height: clamp(200px, 45vh, 320px); top: 28%; }
+  .hero-garland { height: clamp(200px, 45vh, 320px); top: 32%; }
   .hero-garland.left  { left: -20px; }
   .hero-garland.right { right: -20px; }
 }
@@ -566,6 +566,10 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   .nav-hamburger { display: block; }
   .hero-content { min-height: 60vh; }
   .hero { padding: 5rem 1.5rem 3rem; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .hero-content { min-height: 85vh; gap: 4rem; }
+  .hero { padding: 5rem 4rem 2rem; }
   .nav-links {
     display: none;
     position: absolute;
