@@ -310,11 +310,11 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
 }
 @media (max-width: 700px) and (orientation: portrait) {
   .hero-garland { height: clamp(200px, 45vh, 320px); top: 37%; }
-  .hero-garland.left  { left: -20px; }
-  .hero-garland.right { right: -20px; }
+  .hero-garland.left  { left: -5px; }
+  .hero-garland.right { right: -5px; }
 }
 @media (orientation: landscape) and (max-height: 600px) {
-  .hero-garland { height: clamp(280px, 80vh, 420px); top: 42%; }
+  .hero-garland { height: clamp(280px, 80vh, 420px); top: 45%; }
   .hero-garland.left  { left: max(0px, calc(50% - 360px)); }
   .hero-garland.right { right: max(0px, calc(50% - 360px)); }
 }
