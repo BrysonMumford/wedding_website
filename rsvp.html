@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RSVP — Gretel &amp; Bryson</title>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .rsvp-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: var(--shadow-hover);
+      border: 1px solid var(--blue-light);
+    }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2.5rem;
+    }
+
+    .success-msg .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+    .success-msg h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .success-msg p { color: var(--text-mid); }
+
+    .guest-count-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .qty-btn {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid var(--blue-light);
+      background: var(--white);
+      color: var(--blue-dark);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .qty-btn:hover { background: var(--blue-pale); border-color: var(--blue-mid); }
+
+    #qty-display {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--blue-dark);
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .attendance-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .attend-option { position: relative; }
+
+    .attend-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+    }
+
+    .attend-label {
+      display: block;
+      padding: 1.1rem;
+      border: 2px solid var(--blue-light);
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+
+    .attend-label .attend-icon { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; }
+
+    .attend-option input:checked + .attend-label {
+      border-color: var(--blue-deep);
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+    }
+
+    .reception-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .reception-option { position: relative; }
+
+    .reception-option input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+    }
+
+    .reception-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1.1rem;
+      border: 2px solid var(--blue-light);
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+      color: var(--text-mid);
+      height: 100%;
+    }
+
+    .reception-icon { font-size: 1.6rem; }
+    .reception-name { font-size: 0.95rem; margin-top: 0.2rem; }
+    .reception-detail { font-size: 0.78rem; font-weight: 400; color: var(--text-light); line-height: 1.4; }
+
+    .reception-option input:checked + .reception-label {
+      border-color: var(--blue-deep);
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+    }
+
+    .reception-option input:checked + .reception-label .reception-detail {
+      color: var(--blue-mid);
+    }
+
+    .meal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; }
+
+    .meal-option { position: relative; }
+    .meal-option input[type="radio"] { position: absolute; opacity: 0; width: 0; }
+    .meal-label {
+      display: block;
+      padding: 0.9rem 0.8rem;
+      border: 1.5px solid var(--blue-light);
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+    .meal-label .meal-icon { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+    .meal-option input:checked + .meal-label {
+      border-color: var(--blue-deep);
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+    }
+
+    fieldset { border: none; padding: 0; margin: 0; }
+    legend { font-weight: 600; font-size: 0.88rem; letter-spacing: 0.06em; color: var(--text-dark); margin-bottom: 0.8rem; display: block; }
+
+    .submit-row { text-align: center; margin-top: 2rem; }
+    .submit-row .btn { padding: 1rem 3rem; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+<a class="nav-brand" href="index.html">
+
+      G <span>&amp;</span> B
+    </a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="information.html">Information</a></li>
+<li><a href="registry.html">Registry</a></li>
+<li><a class="active" href="rsvp.html">RSVP</a></li>
+</ul>
+</nav>
+<!-- PAGE HERO -->
+<div class="page-hero">
+<img alt="" class="page-garland left" src="images/wedding_flowers.jpg"/>
+<img alt="" class="page-garland right" src="images/wedding_flowers.jpg"/>
+<div class="page-hero-inner">
+<p class="section-label">You're Invited</p>
+<h1>RSVP</h1>
+<p>Please respond by <strong>July 30th</strong></p>
+</div>
+</div>
+<!-- FORM SECTION -->
+<section style="background: var(--blue-pale);">
+<div class="section-inner">
+<div class="rsvp-wrap">
+<!-- Success state -->
+<div class="success-msg" id="success-msg">
+<div class="success-icon">💌</div>
+<h2>Thank You!</h2>
+<p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+<br/>
+<a class="btn btn-primary" href="index.html" style="margin-top:0.5rem;">Back to Home</a>
+</div>
+<!-- Form -->
+<form id="rsvp-form" novalidate="">
+<div style="text-align:center; margin-bottom:2.2rem;">
+<p class="section-label">Step 1 of 1</p>
+<h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--blue-dark);">Your Details</h2>
+</div>
+<!-- Name -->
+<div class="form-row">
+<div class="form-group">
+<label for="first-name">First Name *</label>
+<input id="first-name" name="first-name" placeholder="Your first name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="last-name">Last Name *</label>
+<input id="last-name" name="last-name" placeholder="Your last name" required="" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="form-group">
+<label for="email">Email Address *</label>
+<input id="email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+<!-- Attendance -->
+<div class="form-group">
+<fieldset>
+<legend>Will you be attending? *</legend>
+<div class="attendance-cards">
+<div class="attend-option">
+<input id="attend-yes" name="attendance" required="" type="radio" value="yes"/>
+<label class="attend-label" for="attend-yes">
+<span class="attend-icon">🥂</span>
+                    Joyfully Accepts
+                  </label>
+</div>
+<div class="attend-option">
+<input id="attend-no" name="attendance" type="radio" value="no"/>
+<label class="attend-label" for="attend-no">
+<span class="attend-icon">💔</span>
+                    Regretfully Declines
+                  </label>
+</div>
+</div>
+</fieldset>
+</div>
+<!-- Additional guests section (shown if attending) -->
+<div id="attending-section" style="display:none;">
+<!-- Reception selection -->
+<div class="form-group">
+<fieldset>
+<legend>Which reception(s) will you attend? *</legend>
+<div class="reception-cards">
+<div class="reception-option">
+<input id="reception-utah" name="reception-utah" type="checkbox" value="yes"/>
+<label class="reception-label" for="reception-utah">
+<span class="reception-icon">🏔️</span>
+<span class="reception-name">Utah Reception</span>
+<span class="reception-detail">September 5, 2026</span>
+<span class="reception-detail">6:00 – 8:00 PM</span>
+<span class="reception-detail">Holladay, Utah</span>
+</label>
+</div>
+<div class="reception-option">
+<input id="reception-indiana" name="reception-indiana" type="checkbox" value="yes"/>
+<label class="reception-label" for="reception-indiana">
+<span class="reception-icon">🌽</span>
+<span class="reception-name">Indiana Reception</span>
+<span class="reception-detail">Date TBD</span>
+<span class="reception-detail">Indiana</span>
+<span class="reception-detail">Details coming soon</span>
+</label>
+</div>
+</div>
+</fieldset>
+</div>
+<!-- Guest count -->
+<div class="form-group">
+<label>Number of Guests (including yourself)</label>
+<div style="margin-top:0.3rem;">
+<div class="guest-count-btn">
+<button class="qty-btn" id="qty-minus" type="button">−</button>
+<span id="qty-display">1</span>
+<button class="qty-btn" id="qty-plus" type="button">+</button>
+</div>
+<input id="guest-count" name="guest-count" type="hidden" value="1"/>
+</div>
+</div>
+<!-- Meal choice -->
+<div class="form-group">
+<fieldset>
+<legend>Your Meal Preference</legend>
+<div class="meal-grid">
+<div class="meal-option">
+<input id="meal-chicken" name="meal" type="radio" value="chicken"/>
+<label class="meal-label" for="meal-chicken">
+<span class="meal-icon">🍗</span>
+                      Chicken
+                    </label>
+</div>
+<div class="meal-option">
+<input id="meal-beef" name="meal" type="radio" value="beef"/>
+<label class="meal-label" for="meal-beef">
+<span class="meal-icon">🥩</span>
+                      Beef
+                    </label>
+</div>
+<div class="meal-option">
+<input id="meal-fish" name="meal" type="radio" value="fish"/>
+<label class="meal-label" for="meal-fish">
+<span class="meal-icon">🐟</span>
+                      Fish
+                    </label>
+</div>
+<div class="meal-option">
+<input id="meal-veggie" name="meal" type="radio" value="vegetarian"/>
+<label class="meal-label" for="meal-veggie">
+<span class="meal-icon">🥗</span>
+                      Vegetarian
+                    </label>
+</div>
+</div>
+</fieldset>
+</div>
+<!-- Dietary restrictions -->
+<div class="form-group">
+<label for="dietary">Dietary Restrictions or Allergies</label>
+<input id="dietary" name="dietary" placeholder="e.g. gluten-free, nut allergy…" type="text"/>
+</div>
+<!-- Song request -->
+<div class="form-group">
+<label for="song">Song Request 🎵</label>
+<input id="song" name="song" placeholder="What song will get you on the dance floor?" type="text"/>
+</div>
+</div>
+<!-- Message -->
+<div class="form-group">
+<label for="message">A Note for the Couple</label>
+<textarea id="message" name="message" placeholder="Share your well-wishes, a favorite memory, or a bit of advice for us!"></textarea>
+</div>
+<div class="submit-row">
+<button class="btn btn-gold" id="submit-btn" type="submit">Send My RSVP 💌</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+
+
+<p class="footer-names">Gretel <span>&amp;</span> Bryson</p>
+<p style="margin-top:0.3rem;">September 5, 2026  ·  Holladay, Utah</p>
+</footer>
+<script>
+    // Replace this with your deployed Apps Script URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKoi6QkC3DT168csr23QfHZ6WbN9ohLd1BaWH8ITBkk_sDAnflDtP1d-YJtt4GhJ8e0A/exec';
+
+    // Show/hide attending section
+    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const attending = document.getElementById('attend-yes').checked;
+        document.getElementById('attending-section').style.display = attending ? 'block' : 'none';
+      });
+    });
+
+    // Guest quantity
+    let qty = 1;
+    document.getElementById('qty-minus').addEventListener('click', () => {
+      if (qty > 1) {
+        qty--;
+        document.getElementById('qty-display').textContent = qty;
+        document.getElementById('guest-count').value = qty;
+      }
+    });
+    document.getElementById('qty-plus').addEventListener('click', () => {
+      if (qty < 10) {
+        qty++;
+        document.getElementById('qty-display').textContent = qty;
+        document.getElementById('guest-count').value = qty;
+      }
+    });
+
+    // Form submit
+    document.getElementById('rsvp-form').addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const firstName  = document.getElementById('first-name').value.trim();
+      const lastName   = document.getElementById('last-name').value.trim();
+      const email      = document.getElementById('email').value.trim();
+      const attendance = document.querySelector('input[name="attendance"]:checked');
+
+      if (!firstName || !lastName || !email || !attendance) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      const attending = attendance.value === 'yes';
+      const utahChecked    = document.getElementById('reception-utah').checked;
+      const indianaChecked = document.getElementById('reception-indiana').checked;
+
+      if (attending && !utahChecked && !indianaChecked) {
+        alert('Please select at least one reception you will attend.');
+        return;
+      }
+
+      const data = {
+        firstName,
+        lastName,
+        email,
+        attendance: attendance.value,
+        utahReception:    attending && utahChecked    ? 'Yes' : 'No',
+        indianaReception: attending && indianaChecked ? 'Yes' : 'No',
+        guestCount: attending ? document.getElementById('guest-count').value : '',
+        meal:       attending ? (document.querySelector('input[name="meal"]:checked')?.value || '') : '',
+        dietary:    attending ? document.getElementById('dietary').value.trim() : '',
+        song:       attending ? document.getElementById('song').value.trim() : '',
+        message:    document.getElementById('message').value.trim(),
+      };
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
+        document.getElementById('rsvp-form').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      } catch (err) {
+        alert('Something went wrong. Please try again or email us at bryson.mumford@gmail.com.');
+        btn.disabled = false;
+        btn.textContent = 'Send My RSVP 💌';
+      }
+    });
+  </script>
+</body>
+</html>

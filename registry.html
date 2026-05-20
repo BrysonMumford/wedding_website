@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registry — Gretel &amp; Bryson</title>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .registry-card {
+      text-align: center;
+      padding: 2.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .registry-store-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      border: 2px solid var(--blue-light);
+    }
+
+    .registry-store-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .registry-store-desc {
+      color: var(--text-mid);
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .honeymoon-section {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-dark) 100%);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .honeymoon-section::before {
+      content: '✈️';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.08;
+      top: -1rem;
+      right: -1rem;
+      transform: rotate(15deg);
+    }
+
+    .honeymoon-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .honeymoon-section p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .contribute-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contribute-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px;
+      padding: 1.2rem 1.8rem;
+      color: var(--white);
+      text-align: center;
+      min-width: 140px;
+      backdrop-filter: blur(4px);
+    }
+
+    .contribute-card .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .contribute-card .desc {
+      font-size: 0.82rem;
+      opacity: 0.8;
+      letter-spacing: 0.06em;
+    }
+
+    .note-box {
+      background: var(--blue-pale);
+      border: 1px solid var(--blue-light);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .note-box .note-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .note-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.6rem;
+    }
+    .note-box p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.7; }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+<a class="nav-brand" href="index.html">
+
+      G <span>&amp;</span> B
+    </a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="information.html">Information</a></li>
+<li><a class="active" href="registry.html">Registry</a></li>
+<li><a href="rsvp.html">RSVP</a></li>
+</ul>
+</nav>
+<!-- PAGE HERO -->
+<div class="page-hero">
+<img alt="" class="page-garland left" src="images/wedding_flowers.jpg"/>
+<img alt="" class="page-garland right" src="images/wedding_flowers.jpg"/>
+<div class="page-hero-inner">
+<p class="section-label">Gift Ideas</p>
+<h1>Our Registry</h1>
+</div>
+</div>
+<!-- SWEET NOTE -->
+<section style="background: var(--white);">
+<div class="section-inner" style="max-width:700px; text-align:center;">
+<div class="note-box">
+<div class="note-icon">💕</div>
+<h3>A Note from Us</h3>
+<p>Having you at our wedding is the most meaningful gift you could give us. We are so grateful for the love and support you've shown throughout our relationship. If you do wish to give a gift, we've shared a few options below — but please know that no gift is ever expected or required.</p>
+</div>
+</div>
+</section>
+<!-- REGISTRIES -->
+<section style="background: var(--blue-pale);">
+<div class="section-inner wide">
+<div style="text-align:center; margin-bottom:3rem;">
+<p class="section-label">Shop Our Registries</p>
+<h2 class="section-title">Where We're Registered</h2>
+<div class="divider"></div>
+</div>
+<div class="grid-2">
+<div class="card registry-card">
+<div class="registry-store-icon">🏠</div>
+<p class="registry-store-name">Crate &amp; Barrel</p>
+<p class="registry-store-desc">From kitchen essentials to beautiful home décor, our Crate &amp; Barrel registry is full of things that will make our house feel like home.</p>
+<a class="btn btn-primary" href="#" rel="noopener" target="_blank">View Registry</a>
+</div>
+<div class="card registry-card">
+<div class="registry-store-icon">🎁</div>
+<p class="registry-store-name">Amazon</p>
+<p class="registry-store-desc">A little bit of everything — our Amazon registry covers items both big and small across all categories for our new life together.</p>
+<a class="btn btn-primary" href="https://www.amazon.com/wedding/share/gretelandbryson" rel="noopener" target="_blank">View Registry</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTRIBUTION FUNDS -->
+<section style="background: var(--white);">
+<div class="section-inner wide">
+<div style="text-align:center; margin-bottom:3rem;">
+<p class="section-label">Contribute</p>
+<h2 class="section-title">Contribution Funds</h2>
+<div class="divider"></div>
+</div>
+<div class="grid-2" style="gap:1.5rem;">
+<!-- Furniture Fund -->
+<div class="card registry-card">
+<div class="registry-store-icon">🛋️</div>
+<p class="registry-store-name">Furniture Fund</p>
+<p class="registry-store-desc">Help us furnish our new home in New Jersey! Contribute any amount you'd like.</p>
+<a class="btn btn-primary" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank">Contribute via Venmo</a>
+</div>
+<!-- Honeymoon Fund -->
+<div class="card registry-card">
+<div class="registry-store-icon">✈️</div>
+<p class="registry-store-name">Honeymoon Fund</p>
+<p class="registry-store-desc">Help us celebrate our honeymoon adventure! Contribute any amount you'd like.</p>
+<a class="btn btn-primary" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank">Contribute via Venmo</a>
+</div>
+<!-- Surfing Fund -->
+<div class="card registry-card">
+<div class="registry-store-icon">🏄</div>
+<p class="registry-store-name">Surfing Lessons Fund</p>
+<p class="registry-store-desc">We'd love to take surfing lessons together on the East Coast! Goal: $150.</p>
+<a class="btn btn-primary" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank" style="margin-bottom:1.2rem;">Contribute via Venmo</a>
+<div style="width:100%;">
+<div style="display:flex; justify-content:space-between; font-size:0.82rem; color:var(--text-mid); margin-bottom:0.4rem;">
+<!-- Update the raised amount below as contributions come in -->
+<span>$0 raised</span>
+<span>Goal: $150</span>
+</div>
+<div style="background:var(--blue-light); border-radius:99px; height:10px; overflow:hidden;">
+<!-- Set width % = (amount raised / 150) * 100 -->
+<div style="background:var(--blue-deep); height:100%; width:0%; border-radius:99px;"></div>
+</div>
+</div>
+</div>
+<!-- Broadway Show Fund -->
+<div class="card registry-card">
+<div class="registry-store-icon">🎭</div>
+<p class="registry-store-name">Broadway Show Fund</p>
+<p class="registry-store-desc">Help us catch a Broadway show in New York City! Goal: $300.</p>
+<a class="btn btn-primary" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank" style="margin-bottom:1.2rem;">Contribute via Venmo</a>
+<div style="width:100%;">
+<div style="display:flex; justify-content:space-between; font-size:0.82rem; color:var(--text-mid); margin-bottom:0.4rem;">
+<!-- Update the raised amount below as contributions come in -->
+<span>$0 raised</span>
+<span>Goal: $300</span>
+</div>
+<div style="background:var(--blue-light); border-radius:99px; height:10px; overflow:hidden;">
+<!-- Set width % = (amount raised / 300) * 100 -->
+<div style="background:var(--blue-deep); height:100%; width:0%; border-radius:99px;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THANK YOU -->
+<section style="background: var(--blue-pale); text-align:center;">
+<div class="section-inner" style="max-width:600px;">
+<p class="section-label">From Our Hearts</p>
+<h2 class="section-title">Thank You</h2>
+<div class="divider"></div>
+<p style="color:var(--text-mid); font-size:1.05rem; line-height:1.8; margin-bottom:2rem;">
+        We are so moved by the generosity and love you've shown us. Every gift — whether big or small — comes from a place of love and we will treasure it always. Thank you for being part of our story.
+      </p>
+<p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.4rem; color:var(--blue-dark);">
+        — Gretel &amp; Bryson
+      </p>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+
+
+<p class="footer-names">Gretel <span>&amp;</span> Bryson</p>
+<p style="margin-top:0.3rem;">September 5, 2026  ·  Holladay, Utah</p>
+</footer>
+</body>
+</html>
