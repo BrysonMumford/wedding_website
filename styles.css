@@ -308,16 +308,6 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   right: max(0px, calc(50% - 480px));
   transform: translateY(-50%) scaleX(-1);
 }
-@media (orientation: portrait) {
-  .hero-garland { height: clamp(130px, 28vh, 210px); top: 26%; }
-  .temple-img { width: 180px !important; }
-  .hero-garland.left  { left: -5px; }
-  .hero-garland.right { right: -5px; }
-  .hero-name-line { font-size: clamp(0.65rem, 1.9vw, 1.1rem); }
-  .hero-and { transform: translateX(-0.5em); }
-  .hero-names-wrap { transform: translateY(-3rem); }
-  .hero-date-wrap { transform: translateY(-1rem); }
-}
 @media (orientation: landscape) and (max-height: 600px) {
   .hero-garland { height: clamp(280px, 80vh, 420px); top: 33%; }
   .hero-garland.left  { left: max(0px, calc(50% - 360px)); }
@@ -604,4 +594,15 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   .hero { padding: 5rem 4rem 2rem; }
   .hero-date-wrap { transform: translateY(1rem); }
   .hero-names-wrap { margin-top: 2rem; }
+}
+
+@media (orientation: portrait) {
+  .hero-garland { height: clamp(130px, 28vh, 210px); top: 26%; }
+  .temple-img { width: 180px !important; }
+  .hero-garland.left  { left: -5px; }
+  .hero-garland.right { right: -5px; }
+  .hero-name-line { font-size: clamp(0.65rem, 1.9vw, 1.1rem); }
+  .hero-and { transform: translateX(-0.5em); }
+  .hero-names-wrap { transform: translateY(-3rem); }
+  .hero-date-wrap { transform: translateY(-4rem); }
 }
