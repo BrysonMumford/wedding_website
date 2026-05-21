@@ -309,15 +309,15 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   transform: translateY(-50%) scaleX(-1);
 }
 @media (max-width: 700px) and (orientation: portrait) {
-  .hero-garland { height: clamp(130px, 28vh, 210px); top: 37%; }
+  .hero-garland { height: clamp(130px, 28vh, 210px); top: 33%; }
   .temple-img { width: 180px !important; }
   .hero-garland.left  { left: -5px; }
   .hero-garland.right { right: -5px; }
-  .hero-name-line { font-size: clamp(1.2rem, 3.4vw, 2.2rem); }
+  .hero-name-line { font-size: clamp(1rem, 2.8vw, 1.8rem); }
   .hero-and { transform: translateX(-0.7em); }
 }
 @media (orientation: landscape) and (max-height: 600px) {
-  .hero-garland { height: clamp(280px, 80vh, 420px); top: 20%; }
+  .hero-garland { height: clamp(280px, 80vh, 420px); top: 30%; }
   .hero-garland.left  { left: max(0px, calc(50% - 360px)); }
   .hero-garland.right { right: max(0px, calc(50% - 360px)); }
 }
