@@ -382,7 +382,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   margin: 1rem 0;
   font-weight: 400;
   text-align: center;
-  transform: translateX(-0.6em);
+  transform: translateX(-1.1em);
 }
 
 .hero-date-wrap { text-align: center; }
