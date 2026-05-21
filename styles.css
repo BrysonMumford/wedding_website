@@ -308,7 +308,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   right: max(0px, calc(50% - 480px));
   transform: translateY(-50%) scaleX(-1);
 }
-@media (max-width: 700px) and (orientation: portrait) {
+@media (orientation: portrait) {
   .hero-garland { height: clamp(130px, 28vh, 210px); top: 33%; }
   .temple-img { width: 180px !important; }
   .hero-garland.left  { left: -5px; }
