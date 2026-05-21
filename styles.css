@@ -569,7 +569,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   nav { padding: 0 1rem; }
   .nav-hamburger { display: block; }
   .hero-content { min-height: 60vh; }
-  .hero { padding: 2rem 1.5rem 3rem; }
+  .hero { padding: 2rem 1.5rem 1rem; }
   .nav-links {
     display: none;
     position: absolute;
@@ -599,10 +599,11 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
 @media (orientation: portrait) {
   .hero-garland { height: clamp(130px, 28vh, 210px); top: 26%; }
   .temple-img { width: 180px !important; }
-  .hero-garland.left  { left: -5px; }
-  .hero-garland.right { right: -5px; }
-  .hero-name-line { font-size: clamp(1.1rem, 3.2vw, 2rem); }
+  .hero-garland.left  { left: 10px; }
+  .hero-garland.right { right: 10px; }
+  .hero-name-line { font-size: clamp(1.25rem, 3.6vw, 2.2rem); }
   .hero-and { transform: translateX(-0.5em); }
-  .hero-names-wrap { transform: translateY(-3rem); }
+  .hero-names-wrap { transform: translateY(-2rem); }
   .hero-date-wrap { transform: translateY(-4rem); }
+  .nav-buttons-section { padding: 1rem 1.5rem !important; }
 }
