@@ -313,11 +313,11 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   .temple-img { width: 180px !important; }
   .hero-garland.left  { left: -5px; }
   .hero-garland.right { right: -5px; }
-  .hero-name-line { font-size: clamp(1rem, 2.8vw, 1.8rem); }
-  .hero-and { transform: translateX(-0.7em); }
+  .hero-name-line { font-size: clamp(0.85rem, 2.4vw, 1.5rem); }
+  .hero-and { transform: translateX(-0.5em); }
 }
 @media (orientation: landscape) and (max-height: 600px) {
-  .hero-garland { height: clamp(280px, 80vh, 420px); top: 30%; }
+  .hero-garland { height: clamp(280px, 80vh, 420px); top: 33%; }
   .hero-garland.left  { left: max(0px, calc(50% - 360px)); }
   .hero-garland.right { right: max(0px, calc(50% - 360px)); }
 }
@@ -600,4 +600,5 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   .form-row { grid-template-columns: 1fr; }
   .hero-content { min-height: 85vh; gap: 4rem; }
   .hero { padding: 5rem 4rem 2rem; }
+  .hero-date-wrap { transform: translateY(1rem); }
 }
