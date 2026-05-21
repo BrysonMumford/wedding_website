@@ -309,7 +309,8 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   transform: translateY(-50%) scaleX(-1);
 }
 @media (max-width: 700px) and (orientation: portrait) {
-  .hero-garland { height: clamp(160px, 36vh, 260px); top: 37%; }
+  .hero-garland { height: clamp(130px, 28vh, 210px); top: 37%; }
+  .temple-img { width: 180px !important; }
   .hero-garland.left  { left: -5px; }
   .hero-garland.right { right: -5px; }
   .hero-name-line { font-size: clamp(1.5rem, 4.2vw, 2.8rem); }
