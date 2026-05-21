@@ -362,7 +362,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   width: 100%;
 }
 
-.hero-names-wrap { text-align: center; }
+.hero-names-wrap { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
 .hero-name-line {
   font-family: 'Playfair Display', serif;
@@ -381,6 +381,8 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   letter-spacing: 0.06em;
   margin: 1rem 0;
   font-weight: 400;
+  text-align: center;
+  transform: translateX(-0.6em);
 }
 
 .hero-date-wrap { text-align: center; }
