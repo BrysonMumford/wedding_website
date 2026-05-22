@@ -599,7 +599,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
 @media (orientation: portrait) {
   .hero { justify-content: center; min-height: 70vh; padding: 5rem 1.5rem 2rem; }
   .hero-content { min-height: unset; justify-content: flex-start; gap: 4rem; }
-  .hero-names-wrap { transform: none; }
+  .hero-names-wrap { transform: none; margin-top: 2rem; }
   .hero-date-wrap { transform: none; }
   .hero-garland { height: clamp(130px, 28vh, 210px); top: 34%; }
   .temple-img { width: 180px !important; }
