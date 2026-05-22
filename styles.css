@@ -597,7 +597,7 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
 }
 
 @media (orientation: portrait) {
-  .hero { justify-content: flex-start; min-height: unset; padding: 5rem 1.5rem 1.5rem; }
+  .hero { justify-content: center; min-height: 70vh; padding: 5rem 1.5rem 2rem; }
   .hero-content { min-height: unset; justify-content: flex-start; gap: 2rem; }
   .hero-names-wrap { transform: none; }
   .hero-date-wrap { transform: none; }
