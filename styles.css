@@ -451,8 +451,9 @@ footer .footer-names span { color: var(--gold-light); font-style: italic; }
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
-.timeline-event { font-weight: 600; color: var(--blue-dark); }
-.timeline-note { font-size: 0.9rem; color: var(--text-mid); }
+.timeline-event { font-weight: 600; color: var(--blue-dark); text-decoration: none; }
+.timeline-note { font-size: 0.9rem; color: var(--text-mid); text-decoration: none; }
+.timeline-event a, .timeline-note a { color: inherit; text-decoration: none; pointer-events: none; }
 
 /* ── OUR STORY GALLERY ── */
 .photo-gallery {
