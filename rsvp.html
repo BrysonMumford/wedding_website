@@ -296,20 +296,10 @@
 <input id="guest-count" name="guest-count" type="hidden" value="1"/>
 </div>
 </div>
-<!-- Dietary restrictions -->
-<div class="form-group">
-<label for="dietary">Dietary Restrictions or Allergies</label>
-<input id="dietary" name="dietary" placeholder="e.g. gluten-free, nut allergy…" type="text"/>
-</div>
-<!-- Song request -->
-<div class="form-group">
-<label for="song">Song Request 🎵</label>
-<input id="song" name="song" placeholder="What song will get you on the dance floor?" type="text"/>
-</div>
 </div>
 <!-- Message -->
 <div class="form-group">
-<label for="message">A Note for the Couple</label>
+<label for="message">A Note for the Couple <span style="font-weight:400; color:var(--text-light);">(optional)</span></label>
 <textarea id="message" name="message" placeholder="Share your well-wishes, a favorite memory, or a bit of advice for us!"></textarea>
 </div>
 <div class="submit-row">
@@ -386,9 +376,6 @@
         utahReception:    attending && utahChecked    ? 'Yes' : 'No',
         indianaReception: attending && indianaChecked ? 'Yes' : 'No',
         guestCount: attending ? document.getElementById('guest-count').value : '',
-        meal:       attending ? (document.querySelector('input[name="meal"]:checked')?.value || '') : '',
-        dietary:    attending ? document.getElementById('dietary').value.trim() : '',
-        song:       attending ? document.getElementById('song').value.trim() : '',
         message:    document.getElementById('message').value.trim(),
       };
 
