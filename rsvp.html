@@ -252,7 +252,7 @@
 </fieldset>
 </div>
 <!-- Reception selection -->
-<div class="form-group">
+<div class="form-group" id="reception-section">
 <fieldset>
 <legend>Which reception(s) will you attend? *</legend>
 <div class="reception-cards">
@@ -318,11 +318,12 @@
     // Replace this with your deployed Apps Script URL
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKoi6QkC3DT168csr23QfHZ6WbN9ohLd1BaWH8ITBkk_sDAnflDtP1d-YJtt4GhJ8e0A/exec';
 
-    // Show guest count only when accepting
+    // Show guest count and reception options only when accepting
     document.querySelectorAll('input[name="attendance"]').forEach(radio => {
       radio.addEventListener('change', () => {
         const attending = document.getElementById('attend-yes').checked;
         document.getElementById('guest-count-section').style.display = attending ? 'block' : 'none';
+        document.getElementById('reception-section').style.display = attending ? 'block' : 'none';
       });
     });
 
