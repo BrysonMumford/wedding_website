@@ -127,6 +127,56 @@
       margin-bottom: 0.6rem;
     }
     .note-box p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.7; }
+
+    /* Contribution modal */
+    .contrib-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .contrib-modal-overlay.open { display: flex; }
+
+    .contrib-modal-inner {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      position: relative;
+    }
+
+    .contrib-amount-wrap {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--blue-light);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .contrib-amount-wrap:focus-within { border-color: var(--blue-deep); }
+    .contrib-amount-wrap .dollar-sign {
+      padding: 0.7rem 0.6rem 0.7rem 0.9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .contrib-amount-wrap input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 0.7rem 0.9rem 0.7rem 0;
+      font-size: 1.1rem;
+      color: var(--blue-dark);
+      background: transparent;
+      width: 0;
+    }
   </style>
 </head>
 <body>
@@ -197,16 +247,14 @@
 <div class="registry-store-icon">🏄</div>
 <p class="registry-store-name">Surfing Lessons Fund</p>
 <p class="registry-store-desc">We'd love to take surfing lessons together on the East Coast! Goal: $150.</p>
-<a class="btn btn-primary" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank" style="margin-bottom:1.2rem;">Contribute via Venmo</a>
+<a class="btn btn-primary fund-btn" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank" data-fund="surfing" style="margin-bottom:1.2rem;">Contribute via Venmo</a>
 <div style="width:100%;">
 <div style="display:flex; justify-content:space-between; font-size:0.82rem; color:var(--text-mid); margin-bottom:0.4rem;">
-<!-- Update the raised amount below as contributions come in -->
-<span>$0 raised</span>
+<span id="surfing-raised">$0 raised</span>
 <span>Goal: $150</span>
 </div>
 <div style="background:var(--blue-light); border-radius:99px; height:10px; overflow:hidden;">
-<!-- Set width % = (amount raised / 150) * 100 -->
-<div style="background:var(--blue-deep); height:100%; width:0%; border-radius:99px;"></div>
+<div id="surfing-bar" style="background:var(--blue-deep); height:100%; width:0%; border-radius:99px; transition:width 0.6s ease;"></div>
 </div>
 </div>
 </div>
@@ -215,16 +263,14 @@
 <div class="registry-store-icon">🎭</div>
 <p class="registry-store-name">Broadway Show Fund</p>
 <p class="registry-store-desc">Help us catch a Broadway show in New York City! Goal: $300.</p>
-<a class="btn btn-primary" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank" style="margin-bottom:1.2rem;">Contribute via Venmo</a>
+<a class="btn btn-primary fund-btn" href="https://venmo.com/Bryson_Mumford" rel="noopener" target="_blank" data-fund="broadway" style="margin-bottom:1.2rem;">Contribute via Venmo</a>
 <div style="width:100%;">
 <div style="display:flex; justify-content:space-between; font-size:0.82rem; color:var(--text-mid); margin-bottom:0.4rem;">
-<!-- Update the raised amount below as contributions come in -->
-<span>$0 raised</span>
+<span id="broadway-raised">$0 raised</span>
 <span>Goal: $300</span>
 </div>
 <div style="background:var(--blue-light); border-radius:99px; height:10px; overflow:hidden;">
-<!-- Set width % = (amount raised / 300) * 100 -->
-<div style="background:var(--blue-deep); height:100%; width:0%; border-radius:99px;"></div>
+<div id="broadway-bar" style="background:var(--blue-deep); height:100%; width:0%; border-radius:99px; transition:width 0.6s ease;"></div>
 </div>
 </div>
 </div>
@@ -252,6 +298,30 @@
 <p class="footer-names">Gretel <span>&amp;</span> Bryson</p>
 
 </footer>
+
+<!-- Contribution modal -->
+<div class="contrib-modal-overlay" id="contrib-modal">
+  <div class="contrib-modal-inner">
+    <button id="modal-close" aria-label="Close" style="position:absolute; top:1rem; right:1.2rem; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--text-mid); line-height:1;">✕</button>
+    <div style="text-align:center; margin-bottom:1.6rem;">
+      <div id="modal-icon" style="font-size:2.5rem; margin-bottom:0.4rem;"></div>
+      <h3 id="modal-title" style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--blue-dark); margin-bottom:0.8rem;"></h3>
+      <p style="color:var(--text-mid); font-size:0.88rem; line-height:1.65;">How much are you planning to contribute? We use this to track our progress toward the goal — the bar fills up as pledges come in. No pressure on the amount!</p>
+    </div>
+    <div style="margin-bottom:1.5rem;">
+      <label for="contrib-amount" style="display:block; font-size:0.85rem; font-weight:600; letter-spacing:0.05em; color:var(--text-dark); margin-bottom:0.5rem;">Amount (USD)</label>
+      <div class="contrib-amount-wrap">
+        <span class="dollar-sign">$</span>
+        <input id="contrib-amount" type="number" min="1" max="9999" placeholder="0" />
+      </div>
+    </div>
+    <button id="modal-confirm" class="btn btn-primary" style="width:100%; margin-bottom:0.8rem;">Confirm &amp; Go to Venmo</button>
+    <div style="text-align:center;">
+      <a id="modal-skip" href="#" style="font-size:0.83rem; color:var(--text-light); text-decoration:underline;">Skip &amp; go to Venmo without tracking</a>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   var btn = document.getElementById('nav-hamburger');
@@ -263,6 +333,92 @@
     });
   }
 })();
+</script>
+<script>
+  // ← Paste your deployed Apps Script URL here after setup
+  const FUND_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
+  const FUNDS = {
+    surfing:  { icon: '🏄', title: 'Surfing Lessons Fund', goal: 150, raisedEl: 'surfing-raised',  barEl: 'surfing-bar'  },
+    broadway: { icon: '🎭', title: 'Broadway Show Fund',   goal: 300, raisedEl: 'broadway-raised', barEl: 'broadway-bar' },
+  };
+
+  async function loadTotals() {
+    try {
+      const res  = await fetch(FUND_SCRIPT_URL);
+      const data = await res.json();
+      for (const [key, fund] of Object.entries(FUNDS)) {
+        const raised = data[key] || 0;
+        document.getElementById(fund.raisedEl).textContent = '$' + raised + ' raised';
+        document.getElementById(fund.barEl).style.width = Math.min(100, Math.round((raised / fund.goal) * 100)) + '%';
+      }
+    } catch (e) {}
+  }
+
+  let activeFund = null;
+
+  document.querySelectorAll('.fund-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      activeFund = btn.dataset.fund;
+      const fund = FUNDS[activeFund];
+      document.getElementById('modal-icon').textContent  = fund.icon;
+      document.getElementById('modal-title').textContent = fund.title;
+      document.getElementById('contrib-amount').value    = '';
+      document.getElementById('contrib-modal').classList.add('open');
+      setTimeout(() => document.getElementById('contrib-amount').focus(), 100);
+    });
+  });
+
+  function closeModal() {
+    document.getElementById('contrib-modal').classList.remove('open');
+    activeFund = null;
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+
+  document.getElementById('contrib-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.getElementById('modal-confirm').addEventListener('click', async () => {
+    const amount = parseFloat(document.getElementById('contrib-amount').value);
+    if (!amount || amount <= 0) {
+      document.getElementById('contrib-amount').focus();
+      return;
+    }
+
+    const btn = document.getElementById('modal-confirm');
+    btn.disabled    = true;
+    btn.textContent = 'Saving…';
+
+    try {
+      await fetch(FUND_SCRIPT_URL, {
+        method: 'POST',
+        body:   JSON.stringify({ fund: activeFund, amount }),
+      });
+    } catch (e) {}
+
+    window.open('https://venmo.com/Bryson_Mumford', '_blank');
+    closeModal();
+    loadTotals();
+    btn.disabled    = false;
+    btn.textContent = 'Confirm & Go to Venmo';
+  });
+
+  document.getElementById('modal-skip').addEventListener('click', e => {
+    e.preventDefault();
+    window.open('https://venmo.com/Bryson_Mumford', '_blank');
+    closeModal();
+  });
+
+  if (FUND_SCRIPT_URL !== 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
+    loadTotals();
+  }
 </script>
 </body>
 </html>
