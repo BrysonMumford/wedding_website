@@ -251,8 +251,6 @@
 </div>
 </fieldset>
 </div>
-<!-- Additional guests section (shown if attending) -->
-<div id="attending-section" style="display:none;">
 <!-- Reception selection -->
 <div class="form-group">
 <fieldset>
@@ -264,7 +262,7 @@
 <span class="reception-icon">🏔️</span>
 <span class="reception-name">Utah Reception</span>
 <span class="reception-detail">September 5, 2026</span>
-<span class="reception-detail">6:00 – 8:00 PM</span>
+<span class="reception-detail">6:00 – 8:30 PM</span>
 <span class="reception-detail">2485 Haven Lane</span>
 <span class="reception-detail">Holladay, Utah 84117</span>
 </label>
@@ -273,7 +271,7 @@
 <input id="reception-indiana" name="reception-indiana" type="checkbox" value="yes"/>
 <label class="reception-label" for="reception-indiana">
 <span class="reception-icon">🌽</span>
-<span class="reception-name">Indiana Reception</span>
+<span class="reception-name">Indiana Celebration</span>
 <span class="reception-detail">September 26, 2026</span>
 <span class="reception-detail">6:00 – 8:00 PM</span>
 <span class="reception-detail">Pollard House</span>
@@ -293,7 +291,6 @@
 <button class="qty-btn" id="qty-plus" type="button">+</button>
 </div>
 <input id="guest-count" name="guest-count" type="hidden" value="1"/>
-</div>
 </div>
 </div>
 <!-- Message -->
@@ -318,14 +315,6 @@
 <script>
     // Replace this with your deployed Apps Script URL
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKoi6QkC3DT168csr23QfHZ6WbN9ohLd1BaWH8ITBkk_sDAnflDtP1d-YJtt4GhJ8e0A/exec';
-
-    // Show/hide attending section
-    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        const attending = document.getElementById('attend-yes').checked;
-        document.getElementById('attending-section').style.display = attending ? 'block' : 'none';
-      });
-    });
 
     // Guest quantity
     let qty = 1;
